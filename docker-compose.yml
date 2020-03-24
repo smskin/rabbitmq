@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  rabbitmq:
+    build: .
+    container_name: rabbitmq
+    hostname: rabbitmq
+    ports:
+      - ${RABBITMQ_NODE_HOST_PORT}:5672
+      - ${RABBITMQ_MANAGEMENT_HTTP_HOST_PORT}:15672
+      - ${RABBITMQ_MANAGEMENT_HTTPS_HOST_PORT}:15671
+    privileged: true
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+    restart: on-failure
+    volumes:
+      - ./data:/var/lib/rabbitmq/mnesia

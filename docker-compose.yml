@@ -14,5 +14,7 @@ services:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
     restart: always
+    labels:
+      - traefik.enable=false
     volumes:
       - ./data:/var/lib/rabbitmq/mnesia

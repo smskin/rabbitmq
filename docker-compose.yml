@@ -18,3 +18,8 @@ services:
       - traefik.enable=false
     volumes:
       - ./data:/var/lib/rabbitmq/mnesia
+    networks:
+      - rabbitmq
+networks:
+  rabbitmq:
+    external: true
